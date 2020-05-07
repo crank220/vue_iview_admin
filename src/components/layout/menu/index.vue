@@ -6,7 +6,7 @@
           <div class="layout-logo">iview后台系统</div>
           <div class="layout-nav">
             <Dropdown class="label" @on-click="AdminLoginOut">
-              <Icon type="md-person" />sss<Icon type="ios-arrow-down"/>
+              <Icon type="md-person" />{{getUserInfo.userName}}<Icon type="ios-arrow-down"/>
               <DropdownMenu slot="list">
                 <DropdownItem name="loginOut">退出登录</DropdownItem>
               </DropdownMenu>
@@ -66,6 +66,9 @@ export default {
     },
     openMenu() {
       return this.$route.matched.length > 1 ? [ this.$route.matched[0].name ] : []
+    },
+    getUserInfo() {
+      return this.$store.getters['login/userInfo']
     }
   },
   watch: {
@@ -76,10 +79,10 @@ export default {
   methods: {
     AdminLoginOut(v) {
       if (v === "loginOut") {
-        setTimeout(() => {
-          this.$Message.success("退出成功")
+        this.$store.dispatch('login/loginOut').then(res => {
+          this.$Message.success(res)
           this.$router.push({ path: "/login" })
-        }, 1000)
+        })
       }
     }
   },

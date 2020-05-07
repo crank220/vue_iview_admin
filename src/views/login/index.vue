@@ -13,7 +13,6 @@ export default {
   data() {
     return {
       params: {
-        ip: '111',
         userName: '',
         userPwd: '',
       },
@@ -25,11 +24,14 @@ export default {
       const { userName, userPwd } = this.params
       if (userName && userPwd) {
         this.loading = true
-        setTimeout(() => {
+        this.$store.dispatch('login/login', this.params).then(res => {
           this.$router.push({ path: '/' })
-          this.$Message.success(`欢迎您，sss`)
+          this.$Message.success(`欢迎您，${res}`)
           this.loading = false
-        }, 1000)
+        }).catch(err => {
+          this.$Message.error(err)
+          this.loading = false
+        })
       } else {
         this.$Message.error("账号密码不能为空")
       }
