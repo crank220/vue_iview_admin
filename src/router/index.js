@@ -5,6 +5,9 @@ const Home = () => import(/* webpackChunkName: "home" */ '../views/home/index')
 
 const Login = () => import(/* webpackChunkName: "loginReg" */ '../views/login/index')
 
+const Html2pdf = () => import(/* webpackChunkName: "html2pdf" */ '../views/html2pdf/index')
+
+
 Vue.use(Router)
 
 const router = new Router({
@@ -14,13 +17,19 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
-      meta: {title: '首页'}
+      meta: { title: '首页'}
     },
     {
       path: '/login',
       name: 'login',
       component: Login,
-      meta: {title: 'login', notMenu: true, loginReg: true }
+      meta: { title: 'login', notMenu: true, loginReg: true }
+    },
+    {
+      path: '/html2pdf',
+      name: 'html2pdf',
+      component: Html2pdf,
+      meta: { title: 'html2pdf' }
     }
   ]
 })
