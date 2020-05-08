@@ -1,11 +1,16 @@
 # vue_iview_admin
 
+## 简介
+> iview后台管理系统模版、菜单自动注册/管理、mock login、html2pdf、上传图片、查看大图
+
+
 ## 项目结构
 
 ```bash
 +-- src
 |
 |   +-- assets -> 全局资源目录
+|   |   +-- css -> css资源文件
 |   |   +-- img -> 图片资源文件
 |   |   +-- mock -> 接口mock数据
 |   |

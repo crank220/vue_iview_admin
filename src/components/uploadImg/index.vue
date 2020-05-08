@@ -1,6 +1,6 @@
 <template>
   <div class="upload-img">
-    <Upload type="drag" action="" :format="['jpg','jpeg','png','gif']" :show-upload-list="false"
+    <Upload type="drag" action="//jsonplaceholder.typicode.com/posts/" :format="['jpg','jpeg','png','gif']" :show-upload-list="false"
       :on-success="rst => $emit('uploadSuccess', rst)" :on-error="uploadError" :on-format-error="uploadFormatError">
       <div class="upload">
         <div class="upload-remind" v-show="!imgLink">
@@ -14,6 +14,7 @@
         </div>
       </div>
     </Upload>
+    <p>{{uploadPictureSize}}</p>
     <ViewBigImg :imgSrc="viewImgSrc" @close="viewImgSrc = ''" />
   </div>
 </template>
@@ -33,8 +34,17 @@ export default {
   },
   data() {
     return {
-      viewImgSrc: ""
+      viewImgSrc: "",
+      uploadPictureSize: ""
     }
+  },
+  watch: {
+    imgLink() {
+      this.getImgSize()
+    }
+  },
+  created() {
+    this.getImgSize()
   },
   methods: {
     uploadError() {
@@ -42,7 +52,23 @@ export default {
     },
     uploadFormatError() {
       this.$Message.error("请上传jpg，jpeg，png，gif格式的图片")
-    }
+    },
+    getImgSize() {
+      if (this.imgLink) {
+        const image = new Image()
+        image.src = this.imgLink
+        image.onload = () => {
+          const { width, height } = image
+          this.uploadPictureSize = width && height ? `${width} x ${height}` : ""
+        }
+        image.onerror = () => {
+          this.uploadPictureSize = ""
+          this.$Message.error("图像加载过程中发生错误")
+        }
+      } else {
+        this.uploadPictureSize = ""
+      }
+    },
   }
 }
 </script>
