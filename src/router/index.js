@@ -10,6 +10,7 @@ const Html2pdf = () => import(/* webpackChunkName: "html2pdf" */ '../views/html2
 const Workshop = () => import(/* webpackChunkName: "workshop" */ '../views/workshop/index')
 const WorkshopViewBigImg = () => import(/* webpackChunkName: "workshop" */ '../views/workshop/cell/viewBigImg')
 const WorkshopUploadImg = () => import(/* webpackChunkName: "workshop" */ '../views/workshop/cell/uploadImg')
+const WorkshopFormVerification = () => import(/* webpackChunkName: "workshop" */ '../views/workshop/cell/formVerification')
 
 Vue.use(Router)
 
@@ -45,13 +46,19 @@ const router = new Router({
           path: '/workshop/viewBigImg',
           name: 'workshoViewBigImg',
           component: WorkshopViewBigImg,
-          meta: { title: '查看大图' }
+          meta: { title: '大图预览' }
         },
         {
           path: '/workshop/uploadImg',
           name: 'workshoUploadImg',
           component: WorkshopUploadImg,
           meta: { title: '上传图片' }
+        },
+        {
+          path: '/workshop/formVerification',
+          name: 'workshoFormVerification',
+          component: WorkshopFormVerification,
+          meta: { title: '表单验证' }
         }
       ]
     },

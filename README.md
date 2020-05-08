@@ -1,7 +1,7 @@
 # vue_iview_admin
 
 ## 简介
-> iview后台管理系统模版、菜单自动注册/管理、mock login、html2pdf、上传图片、查看大图
+> iview后台管理系统模版、菜单自动注册/管理、mock login、html2pdf、上传图片、大图预览、表单验证
 
 
 ## 项目结构
