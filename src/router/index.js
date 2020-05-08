@@ -5,6 +5,10 @@ const Home = () => import(/* webpackChunkName: "home" */ '../views/home/index')
 
 const Login = () => import(/* webpackChunkName: "loginReg" */ '../views/login/index')
 
+const Editor = () => import(/* webpackChunkName: "editor" */ '../views/editor/index')
+const EditorMarkdown = () => import(/* webpackChunkName: "editor" */ '../views/editor/cell/markdown')
+const EditorMText = () => import(/* webpackChunkName: "editor" */ '../views/editor/cell/MText')
+
 const Html2pdf = () => import(/* webpackChunkName: "html2pdf" */ '../views/html2pdf/index')
 
 const Workshop = () => import(/* webpackChunkName: "workshop" */ '../views/workshop/index')
@@ -28,6 +32,27 @@ const router = new Router({
       name: 'login',
       component: Login,
       meta: { title: 'login', notMenu: true, loginReg: true }
+    },
+    {
+      path: '/editor',
+      name: 'editor',
+      component: Editor,
+      meta: { title: '编辑器' },
+      redirect: "/editor/markdown",
+      children: [
+        {
+          path: '/editor/markdown',
+          name: 'editorMarkdown',
+          component: EditorMarkdown,
+          meta: { title: 'markdown' }
+        },
+        {
+          path: '/editor/MText',
+          name: 'editorMText',
+          component: EditorMText,
+          meta: { title: '多文本' }
+        }
+      ]
     },
     {
       path: '/html2pdf',

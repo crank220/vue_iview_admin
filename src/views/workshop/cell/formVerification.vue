@@ -45,6 +45,7 @@ export default {
           { required: true, message: '姓名不能为空', trigger: 'blur' }
         ],
         mail: [{
+          required: true,
           validator: (rule, value, callback) => {
             if (!value) {
               callback(new Error('邮箱不能为空'))
@@ -57,6 +58,7 @@ export default {
           trigger: 'blur'
         }],
         url: [{
+          required: true,
           validator: (rule, value, callback) => {
             if (!value) {
               callback(new Error('网站地址不能为空'))
@@ -82,6 +84,7 @@ export default {
           trigger: 'blur'
         }],
         phone: [{
+          required: true,
           validator: (rule, value, callback) => {
             if (!value) {
               return callback(new Error('手机号不能为空'))
