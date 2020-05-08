@@ -86,7 +86,7 @@ const router = new Router({
           meta: { title: '表单验证' }
         }
       ]
-    },
+    }
   ]
 })
 

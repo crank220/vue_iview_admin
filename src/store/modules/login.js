@@ -9,7 +9,7 @@ export default {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (userPwd === "123456") {
-            commit("updateUserInfo", params)
+            commit("updateUserInfo", { ...params, token: `token_${new Date().getTime()}` })
             resolve(userName)
           } else {
             reject("账号密码不匹配，密码为123456")
