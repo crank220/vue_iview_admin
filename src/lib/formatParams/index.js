@@ -21,3 +21,15 @@ export const deleteUseless = obj => {
   })
   return obj
 }
+/**
+ * 对象去重排序
+ * @param obj
+ * @returns {Object}
+ */
+export const sortObj = obj => {
+  const _obj = {}
+  Array.from(new Set(Object.keys(obj))).sort().map(key => {
+    _obj[key] = obj[key]
+  })
+  return _obj
+}

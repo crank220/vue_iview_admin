@@ -15,7 +15,6 @@ Vue.use(VueAxios, http)
 
 import VueRouter from 'vue-router'
 import router from './router/index'
-Vue.use(VueRouter)
 const VueRouterPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(to) {
   return VueRouterPush.call(this, to).catch(err => err)
@@ -31,6 +30,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach(route => {
   ViewUI.LoadingBar.finish()
 })
+Vue.use(VueRouter)
 
 http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 http.interceptors.request.use(function (config) {
